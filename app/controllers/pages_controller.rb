@@ -27,4 +27,18 @@ class PagesController < ApplicationController
 		end
 	end
 
+	def edit
+		@page = Page.find(params[:id])
+	end
+
+	def update
+		@page = Page.find(params[:id])
+
+		if @page.update_attributes(params[:page])
+			redirect_to(:action => 'show', :id => @page.id)
+		else
+			render('edit')
+		end
+	end
+
 end

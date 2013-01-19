@@ -1,7 +1,7 @@
 <div class="section list">
 	<h2>Sections</h2>
 
-	<%= link_to("Add New Section", {:action => 'new'}, :class => 'action new') %>
+	<%= link_to("Add New Section", {:action => 'new'}, :class => 'action new' ) %>
 
 	<table class="listing" summary="Section list">
 		<tr>
@@ -10,14 +10,14 @@
 			<th>Visible</th>
 			<th>Actions</th>
 		</tr>
-		<%= @sections.each do |section| %>
+		<% @sections.each do |section| %>
 		<tr>
 			<td><%= section.position  %></td>
 			<td><%= section.name  %></td>
-			<td class="center"><%=  section.visible ? 'Yes' : 'No' %></td>
+			<td class="center"><%= section.visible ? 'Yes' : 'No' %></td>
 			<td class="actions">
-				<%=  link_to("Show", { :action => 'show', :id => section.id }, :class => 'action show') %>
-				<%=  link_to("Edit", '#', :class => 'action edit') %>
+				<%=  link_to("Show", {:action => 'show', :id => section.id}, :class => 'action show') %>
+				<%=  link_to("Edit", {:action => 'edit', :id => section.id}, :class => 'action edit') %>
 				<%=  link_to("Delete", '#', :class => 'action delete') %>
 			</td>
 

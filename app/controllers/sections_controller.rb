@@ -29,4 +29,18 @@ class SectionsController < ApplicationController
 		end
 	end
 
+	def edit
+		@section = Section.find(params[:id])
+	end
+
+	def update
+		@section = Section.find(params[:id])
+
+		if @section.update_attributes(params[:section])
+			redirect_to(:action => 'show', :id => @section.id)
+		else
+			render('edit')
+		end
+	end
+
 end
