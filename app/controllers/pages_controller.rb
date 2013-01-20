@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
 
+	layout 'admin'
+
 	def index #this is created so that name.com/pages doesn't return empty
 		list
 		render('list')
@@ -21,6 +23,7 @@ class PagesController < ApplicationController
 		@page = Page.new(params[:page])
 
 		if @page.save 
+			flash[:notice] = "Page created!"
 			redirect_to(:action => 'list')
 		else
 			render('new')
@@ -35,10 +38,21 @@ class PagesController < ApplicationController
 		@page = Page.find(params[:id])
 
 		if @page.update_attributes(params[:page])
+			flash[:notice] = "Page updated!"
 			redirect_to(:action => 'show', :id => @page.id)
 		else
 			render('edit')
 		end
+	end
+
+	def delete
+		@page = Page.find(params[:id])
+	end
+
+	def destroy
+		Page.find(params[:id]).destroy
+		flash[:notice] = "Page deleted!"
+		redirect_to(:action => 'list')
 	end
 
 end

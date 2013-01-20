@@ -1,5 +1,7 @@
 class SubjectsController < ApplicationController
 
+	layout 'admin'
+
 	def index #we create this b/c we don't want a user who goes to the URL name.com/subjects to find an error, so we choose here what to display
 		list  # we will display the list (method below)
 		render('list') #must put which template to render or it will try to render index by default
@@ -24,6 +26,7 @@ class SubjectsController < ApplicationController
 		#Save the object
 		if @subject.save   #recall .save returns a boolean
 			#If save succeeds, redireect to list action
+			flash[:notice] = "Subject created."
 			redirect_to(:action => 'list')
 		else
 			#If save fails, redisplay the form so user can fix problems
@@ -45,11 +48,22 @@ class SubjectsController < ApplicationController
 		#Update the object
 		if @subject.update_attributes(params[:subject])  
 			#If update succeeds, redireect to list action
+			flash[:notice] = "Subject updated."
 			redirect_to(:action => 'show', :id => @subject.id)
 		else
 			#If update fails, redisplay the form so user can fix problems
 			render('edit')
 		end	
+	end
+
+	def delete
+		@subject = Subject.find(params[:id])
+	end
+
+	def destroy
+		Subject.find(params[:id]).destroy
+		flash[:notice] = "Subject destroyed."
+		redirect_to(:action => 'list')
 	end
 
 end
