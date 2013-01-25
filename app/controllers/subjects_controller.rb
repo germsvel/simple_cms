@@ -18,6 +18,7 @@ class SubjectsController < ApplicationController
 
 	def new
 		@subject = Subject.new(:name => 'default')
+		@subject_count = Subject.count + 1
 	end
 
 	def create
@@ -30,6 +31,7 @@ class SubjectsController < ApplicationController
 			redirect_to(:action => 'list')
 		else
 			#If save fails, redisplay the form so user can fix problems
+			@subject_count = Subject.count + 1
 			render('new')
 			#note that here we need to tell render how to pre-populate the form. We want it to be pre-populated 
 			#with information that the user had already put in. Fortunately, defining @subject as an instance 
@@ -40,6 +42,7 @@ class SubjectsController < ApplicationController
 
 	def edit
 		@subject = Subject.find(params[:id])
+		@subject_count = Subject.count
 	end
 
 	def update
@@ -52,6 +55,7 @@ class SubjectsController < ApplicationController
 			redirect_to(:action => 'show', :id => @subject.id)
 		else
 			#If update fails, redisplay the form so user can fix problems
+			@subject_count = Subject.count
 			render('edit')
 		end	
 	end
