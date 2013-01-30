@@ -2,6 +2,8 @@ class PagesController < ApplicationController
 
 	layout 'admin'
 
+	before_filter :confirm_logged_in, :except => [:login, :attempt_login, :logout]
+
 	def index #this is created so that name.com/pages doesn't return empty
 		list
 		render('list')

@@ -1,9 +1,17 @@
 class Subject < ActiveRecord::Base
-  attr_accessible :name, :position, :visible
-
+  attr_accessible :name, :position, :visible, :created_at
+  
+  
   has_many :pages
 
+  # dont' need to validate (in most cases):
+  #  ids, foreign keys, timestamps, booleans, counters 
+
   validates_presence_of :name
+  validates_length_of :name, :maximum => 255
+  # validates_presence_of vs. validates_length_of :minimum => 1
+  # different erros messages: "can't be blank" or "is too short"
+  # validates_length_of allows strings with only spaces!!
 
   scope :visible, where(:visible => true)
   scope :invisible, where(:visible => false)

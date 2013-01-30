@@ -2,6 +2,8 @@ class SubjectsController < ApplicationController
 
 	layout 'admin'
 
+	before_filter :confirm_logged_in, :except => [:login, :attempt_login, :logout]
+
 	def index #we create this b/c we don't want a user who goes to the URL name.com/subjects to find an error, so we choose here what to display
 		list  # we will display the list (method below)
 		render('list') #must put which template to render or it will try to render index by default
