@@ -1,0 +1,33 @@
+<% @page_title = "Admin Users List" %>
+
+<div class="admin_users list">
+	<h2>Admin Users</h2>
+
+	<p><%= link_to("<< Back to main menu", :controller => 'access', :action => 'menu') %> <br /></p>
+
+	<p><%= link_to("Create New Admin User", :action => 'new') %> <br /></p>
+
+	<div><%= pluralize(@admin_users.size, 'admin user') %> found</div>
+
+	<table summary="Admin Users">
+		<tr>
+			<th>Username</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Actions</th>
+		</tr>
+
+		<% @admin_users.each do |admin_user| %>
+		<tr class="<%= cycle('odd', 'even') %>">
+			<td><%= admin_user.username %></td>
+			<td><%= admin_user.name %></td>
+			<td><%= mail_to(admin_user.email) %></td>
+			<td class="actions">
+				<%= link_to("edit", {:action => 'edit', :id => admin_user.id}, :class => 'action edit') %>
+				<%= link_to("delete", {:action => 'delete', :id => admin_user.id}, :class => 'action delete') %>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+	
+</div>
