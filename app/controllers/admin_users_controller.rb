@@ -50,5 +50,4 @@ class AdminUsersController < ApplicationController
     flash[:notice] = "User has been deleted!"
     redirect_to(:action => 'list')
   end
-
 end

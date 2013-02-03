@@ -3,12 +3,16 @@
 		<table summary="Page form fields">
 			
 			<tr>
-				<th> <%= f.label(:subject_id, "Subject ID") %></th>
+				<th> <%= f.label(:subject_id, "Subject") %></th>
 				<td> <%= f.select(:subject_id, @subject_ids) %> </td>
 			</tr>
 			<tr>
 				<th><%= f.label(:name) %></th>
 				<td><%= f.text_field(:name) %></td>
+			</tr>
+			<tr>
+				<th><%= f.label(:permalink) %></th>
+				<td><%= f.text_field(:permalink) %></td>
 			</tr>
 			<tr>
 				<th><%= f.label(:position) %></th>

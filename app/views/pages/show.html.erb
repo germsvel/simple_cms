@@ -1,9 +1,13 @@
-<%=  link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+<%=  link_to("<< Back to List", {:action => 'list', :subject_id => @subject.id}, :class => 'back-link') %>
 
 <div class="page show">
 	<h2>Show Page</h2>
 
 	<table summary="Page detail view">
+		<tr>
+			<th>Subject ID</th>
+			<td><%=  @subject.id %></td>
+		</tr>
 		<tr>
 			<th>Name</th>
 			<td><%=  @page.name %></td>
@@ -11,6 +15,10 @@
 		<tr>
 			<th>Position</th>
 			<td><%=  @page.position %></td>
+		</tr>
+		<tr>
+			<th>Permalink</th>
+			<td><%=  @page.permalink %></td>
 		</tr>
 		<tr>
 			<th>Visible</th>

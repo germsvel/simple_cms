@@ -2,7 +2,8 @@ class SectionsController < ApplicationController
 
 	layout 'admin'
 	
-	before_filter :confirm_logged_in, :except => [:login, :attempt_login, :logout]
+	before_filter :confirm_logged_in
+	before_filter :find_page
 	
 	def index
 		list
@@ -10,7 +11,7 @@ class SectionsController < ApplicationController
 	end
 
 	def list
-		@sections = Section.order("sections.position ASC")
+		@sections = Section.sorted.where(:page_id => @page.id)
 	end
 
 	def show
@@ -18,8 +19,8 @@ class SectionsController < ApplicationController
 	end
 
 	def new
-		@section = Section.new(:name => 'Section Name')
-		@section_count = Section.count + 1
+		@section = Section.new(:page_id => @page.id)
+		@section_count = @page.sections.size + 1
 		@page_ids = Page.pluck(:id)
 	end
 
@@ -30,9 +31,9 @@ class SectionsController < ApplicationController
 		if @section.save
 			#redirect to the list action
 			flash[:notice] = "Section has been created"
-			redirect_to(:action => 'list')
+			redirect_to(:action => 'list', :page_id => @section.page_id)
 		else
-			@section_count = Section.count + 1
+			@section_count = @page.sections.size + 1
 			@page_ids = Page.pluck(:id)
 			render('new')
 		end
@@ -40,7 +41,7 @@ class SectionsController < ApplicationController
 
 	def edit
 		@section = Section.find(params[:id])
-		@section_count = Section.count
+		@section_count = @page.sections.size
 		@page_ids = Page.pluck(:id)
 	end
 
@@ -49,9 +50,9 @@ class SectionsController < ApplicationController
 
 		if @section.update_attributes(params[:section])
 			flash[:notice] = "You have updated a section"
-			redirect_to(:action => 'show', :id => @section.id)
+			redirect_to(:action => 'show', :id => @section.id, :page_id => @section.page_id)
 		else
-			@section_count = Section.count
+			@section_count = @page.sections.size
 			@page_ids = Page.pluck(:id)
 			render('edit')
 		end
@@ -64,7 +65,15 @@ class SectionsController < ApplicationController
 	def destroy
 		Section.find(params[:id]).destroy
 		flash[:notice] = "Minus one section. Just deleted it."
-		redirect_to(:action => 'list')
+		redirect_to(:action => 'list', :page_id => @page.id)
+	end
+
+	private
+
+	def find_page
+		if params[:page_id]
+			@page = Page.find_by_id(params[:page_id])
+		end
 	end
 
 end
