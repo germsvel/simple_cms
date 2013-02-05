@@ -1,7 +1,9 @@
+require 'lib/position_mover'
 class Subject < ActiveRecord::Base
   attr_accessible :name, :position, :visible, :created_at
   
-  
+  include PositionMover
+
   has_many :pages
 
   # dont' need to validate (in most cases):

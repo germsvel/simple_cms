@@ -25,9 +25,11 @@ class PagesController < ApplicationController
 	end
 
 	def create
+		new_position = params[:page].delete(:position)
 		@page = Page.new(params[:page])
 
 		if @page.save 
+			@page.move_to_position(new_position)
 			flash[:notice] = "Page created!"
 			redirect_to(:action => 'list', :subject_id => @page.subject_id)
 		else
@@ -46,7 +48,9 @@ class PagesController < ApplicationController
 	def update
 		@page = Page.find(params[:id])
 
+		new_position = params[:page].delete(:position)
 		if @page.update_attributes(params[:page])
+			@page.move_to_position(new_position)
 			flash[:notice] = "Page updated!"
 			redirect_to(:action => 'show', :id => @page.id, :subject_id => @page.subject_id)
 		else
@@ -61,7 +65,9 @@ class PagesController < ApplicationController
 	end
 
 	def destroy
-		Page.find(params[:id]).destroy
+		page = Page.find(params[:id])
+		page.move_to_position(nil)
+		page.destroy
 		flash[:notice] = "Page deleted!"
 		redirect_to(:action => 'list', :subject_id => @subject.id)
 	end
