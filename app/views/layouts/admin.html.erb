@@ -4,11 +4,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Simple CMS | <%= @page_title || "Admin Area" %></title>
 		<meta name="author" content="German Velasco">
-		<%= stylesheet_link_tag('public', 'admin', :media => 'all') %>
+		<%= stylesheet_link_tag('bootstrap', 'bootstrap-responsive', 'public', 'admin', :media => 'all') %>
 		<%= javascript_include_tag('application') %>
 	</head>
 	<body>
-		<div id="header">
+		<div id="header" class="hero-unit">
 			<h1>Simple CMS Admin</h1>
 		</div>
 		<div id="main">
@@ -17,12 +17,13 @@
 			 	<%= flash[:notice] %>
 			</div>
 			<% end %>
-			<div id="content">
+			<div id="content container">
 				<%= yield %>
 			</div>
+			
 		</div>
 		<div id="footer">
-			<p id="copyright">&copy; whosaidwhat.com / says dude</p>
+			<p id="copyright">&copy; 2013 - Designed and built by 3monkeys</p>
 		</div>
 	</body>
 </html>

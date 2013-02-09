@@ -5,6 +5,13 @@ SimpleCms::Application.routes.draw do
 
   match 'admin', :to => 'access#menu'
   match 'show/:id', :to => 'public#show' 
+
+
+  # resources :subjects do
+  #   member do 
+  #     get :delete
+  #   end
+  # end
   #get "demo/index"
 
   # The priority is based upon order of creation:

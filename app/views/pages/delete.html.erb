@@ -1,8 +1,8 @@
 
-<%= link_to("<< Back to List", {:action => 'list', :subject_id => @subject.id}, :class => 'back-link') %>
+<%= link_to("<< Back to List", {:action => 'list', :subject_id => @subject.id}, :class => 'btn btn-link') %>
 
 <div class="page delete">
-	<h2>Delete Page</h2>
+	<h2 class="title">Delete Page</h2>
 	
 	<%= form_for(:page, :url => {:action => 'destroy', :id => @page.id, :subject_id => @subject.id}) do |f| %>
 
@@ -10,7 +10,7 @@
 
 		<p class="reference-name"><%= @page.name %></p>
 
-		<div class="form-buttons">
+		<div class="form-buttons btn btn-danger">
 			<%= submit_tag("Delete Page") %>
 		</div>
 

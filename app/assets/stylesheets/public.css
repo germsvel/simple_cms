@@ -7,6 +7,12 @@ light green: 	#B6D491
 yellow:			#F2DC87
 dark brown:		#332318
 light brown:	#4C2516
+-----------------------
+base + 2:		#25303D	
+base + 1:		#4D6078
+base blue: 		#6A819E
+base - 1:		#7B96B8
+base - 2: 		#8BA5C4
 */
 
 html { 
@@ -16,12 +22,12 @@ html {
 
 body {
 	width: 100%;
-	min-width: 980px;
-	height: 100%;
+/*	min-width: 980px;
+*/	height: 100%;
 	margin: 0;
 	padding: 0;
 	font: 14px Verdana, Lucida, Arial, Helvetica, sans-serif;
-	color: #332318;
+	color: #333333;
 }
 
 p, td, ul, ol, li, dl, dt, dd, {
@@ -41,12 +47,12 @@ table tr th, table tr td {
 	text-align: left;
 	padding: 3px;
 }
-
+/*
 a, a:visited {
-	color: #993120;
+	color: #25303D;
 }
 
-a:hover {}
+a:hover {}*/
 
 .clear {
 	clear: both
@@ -60,53 +66,59 @@ a:hover {}
 /*Structure*/
 
 #header{
-	height: 4em;
 	padding-top: 1em; 
+	padding-bottom: 1em;
 	text-align: center;
-	background: #993120; color: #FFFFFF;
+	background: #B4BEBF; 
+	color: #333333;
+	height: 15%;
+	border-bottom: .2em ridge #333333;
 }
 
-#header h1 {
+#header > h1 {
 	margin: 0;
-	padding: 0;
+	padding: .5em 0 0 0;
+	font-size: 3em;
 }
 
 #main {
 	min-height: 500px; 
-	background: #F2DC87;
+	background: #FFFFFF;
 }
 
 #navigation {
 	float: left;
-	width: 180px;
+	width: 18%;
 	min-height: 480px;
-	padding 10px;
-	background: #94B26F;
-	color: #4C2516;
+	padding-left: .5em;
+/*	background: #FFFFFF;
+	color: #333333;*/
+	border-right: .2em ridge #333333; 
 }
 
 #content {
 	float: left;
-	padding: 10px;
+	width: 75%;
+	padding: 1em;
 }
 
 #footer {
 	clear: both;
 	height: 2.5em;
 	text-align: right;
-	background: #4C2516;
-	color: #F2DC87;
+	background: #FFFFFF;
+	color: #333333;
 }
 
 #footer p {
 	margin: 0;
-	padding: 0.5 em 1 em;
+	padding: 0.5em 1em;
 }
 
 
 /*Navigation*/
 
-#navigation ul {
+/*#navigation ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -125,15 +137,16 @@ a:hover {}
 	text-decoration: none;
 	padding: 1px 3px;
 }
+*/
+/*#navigation a:hover {
+	color: #666666;
+}*/
 
-#navigation a:hover {
-	background: #F2DC87;
-}
 
 /*Content*/
 
 #content h2 {
-	color: #4C2516;
+	color: #333333;
 }
 
 

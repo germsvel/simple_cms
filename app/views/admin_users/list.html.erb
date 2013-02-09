@@ -1,20 +1,24 @@
 <% @page_title = "Admin Users List" %>
 
+
+<p><%= link_to("<< Back to main menu", {:controller => 'access', :action => 'menu'}, :class => "btn btn-link") %> <br /></p>
+
+
 <div class="admin_users list">
-	<h2>Admin Users</h2>
+	<h2 class="title">Admin Users</h2>
 
-	<p><%= link_to("<< Back to main menu", :controller => 'access', :action => 'menu') %> <br /></p>
+	
 
-	<p><%= link_to("Create New Admin User", :action => 'new') %> <br /></p>
+	<p><%= link_to("Create New Admin User", {:action => 'new'}, :class => 'action new btn create-btn') %></p>
 
-	<div><%= pluralize(@admin_users.size, 'admin user') %> found</div>
+	<div class="query-result-title"><%= pluralize(@admin_users.size, 'admin user') %> found</div>
 
 	<table summary="Admin Users">
 		<tr>
 			<th>Username</th>
 			<th>Name</th>
 			<th>Email</th>
-			<th>Actions</th>
+			<th class="actions-title">Actions</th>
 		</tr>
 
 		<% @admin_users.each do |admin_user| %>
@@ -22,9 +26,9 @@
 			<td><%= admin_user.username %></td>
 			<td><%= admin_user.name %></td>
 			<td><%= mail_to(admin_user.email) %></td>
-			<td class="actions">
-				<%= link_to("edit", {:action => 'edit', :id => admin_user.id}, :class => 'action edit') %>
-				<%= link_to("delete", {:action => 'delete', :id => admin_user.id}, :class => 'action delete') %>
+			<td  class="actions btn-group">
+				<%= link_to("edit", {:action => 'edit', :id => admin_user.id}, :class => 'btn action edit') %>
+				<%= link_to("delete", {:action => 'delete', :id => admin_user.id}, :class => 'btn btn-warning action delete') %>
 			</td>
 		</tr>
 		<% end %>

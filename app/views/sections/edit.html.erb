@@ -1,4 +1,4 @@
-<%=  link_to("<< Back to List", {:action => 'list', :page_id => @page.id}, :class => 'back-link') %>
+<%=  link_to("<< Back to List", {:action => 'list', :page_id => @page.id}, :class => 'btn btn-link') %>
 
 <div class="section edit">
 	<h2>Update Section</h2>
@@ -7,7 +7,7 @@
 
 		<%= render(:partial => "form", :locals => {:f => f}) %>
 
-		<div class="form-buttons">
+		<div class="form-buttons btn">
 			<%= submit_tag("Update Section") %>
 		</div>
 	<% end %>

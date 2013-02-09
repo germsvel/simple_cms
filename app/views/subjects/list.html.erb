@@ -1,13 +1,13 @@
 <% @page_title = "Subjects List" %>
 
-<%= link_to("<< Back to Main Menu", {:controller => 'access', :action => 'menu'}, :class => 'back-link') %>
+<%= link_to("<< Back to Main Menu", {:controller => 'access', :action => 'menu'}, :class => 'btn btn-link') %>
 
 <div class="subject list">
-	<h2>Subjects</h2>
+	<h2 class="title">Subjects</h2>
 
-	<%= link_to("Add New Subject", {:action => 'new'}, :class => 'action new' ) %>
+	<%= link_to("Add New Subject", {:action => 'new'}, :class => 'action new btn create-btn' ) %>
 
-	<div> <%= pluralize(@subjects.size, 'subject') %> found </div>
+	<div class="list query-result-title"> <%= pluralize(@subjects.size, 'subject') %> found </div>
 	
 	<table class="listing" summary="Subject list">
 		<tr>
@@ -15,19 +15,19 @@
 			<th>Subject</th>
 			<th>Visible</th>
 			<th>Pages</th>
-			<th>Actions</th>
+			<th class="actions-title">Actions</th>
 		</tr>
 		<% @subjects.each do |subject| %>
 		<tr class="<%= cycle('odd', 'even') %>">
 			<td><%= subject.position  %></td>
-			<td><%= subject.name  %></td>
+			<td><%= subject.name.capitalize  %></td>
 			<td class="center"><%= status_tag(subject.visible) %></td>
 			<td class="center"><%= subject.pages.size  %></td>
-			<td class="actions">
-				<%= link_to("View Pages", {:controller => 'pages', :action => 'list', :subject_id => subject.id}, :class => 'action show') %>
-				<%=  link_to("Show", {:action => 'show', :id => subject.id}, :class => 'action show') %>
-				<%=  link_to("Edit", {:action => 'edit', :id => subject.id}, :class => 'action edit') %>
-				<%=  link_to("Delete", {:action => 'delete', :id => subject.id}, :class => 'action delete') %>
+			<td class="actions btn-group">
+				<%= link_to("View Pages", {:controller => 'pages', :action => 'list', :subject_id => subject.id}, :class => 'action btn') %>
+				<%=  link_to("Show", {:action => 'show', :id => subject.id}, :class => 'action btn') %>
+				<%=  link_to("Edit", {:action => 'edit', :id => subject.id}, :class => 'action edit btn') %>
+				<%=  link_to("Delete", {:action => 'delete', :id => subject.id}, :class => 'action delete btn btn-warning') %>
 			</td>
 
 		</tr>

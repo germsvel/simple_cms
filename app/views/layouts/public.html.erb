@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Simple CMS | <%=  "| #{@page_title}" if @page_title %></title>
+		<title>Simple CMS <%= @page_title ? "| #{@page_title}" : " "  %></title>
 		<meta name="author" content="German Velasco">
-		<%= stylesheet_link_tag('public', :media => 'all') %>
+		<%= stylesheet_link_tag('bootstrap', 'bootstrap-responsive', 'public', :media => 'all') %>
 	</head>
 	<body>
 		<div id="header">
@@ -18,9 +19,10 @@
 				<%= yield %>
 			</div>
 			<div class="clear"></div>
+			<div id="footer">
+				<p id="copyright">&copy; 2013 - Designed and built by 3monkeys</p>
+			</div>
 		</div>
-		<div id="footer">
-			<p id="copyright">&copy; whosaidwhat.com / says dude</p>
-		</div>
+		
 	</body>
 </html>

@@ -1,8 +1,8 @@
 <!-- #Note: this is just a page that we can will confirm the want to delete the subject. We could just write it straight up (i.e. when they press delete it destroys the subject) with js doing the validation or verification -->
-<%= link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+<%= link_to("<< Back to List", {:action => 'list'}, :class => 'btn btn-link') %>
 
 <div class="subject delete">
-	<h2>Delete Subject</h2>
+	<h2 class="title">Delete Subject</h2>
 	
 	<%= form_for(:subject, :url => {:action => 'destroy', :id => @subject.id}) do |f| %>
 
@@ -10,7 +10,7 @@
 
 		<p class="reference-name"><%= @subject.name %></p>
 
-		<div class="form-buttons">
+		<div class="form-buttons btn btn-danger">
 			<%= submit_tag("Delete Subject") %>
 		</div>
 

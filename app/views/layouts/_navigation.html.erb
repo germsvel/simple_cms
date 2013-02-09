@@ -1,13 +1,13 @@
 <% subjects ||= [] %>
-<ul>
+<ul class="nav nav-list">
 	<% subjects.each do |subject| %>
-	<li>
-		<%= subject.name %>
-		<ul>
+	<li class="nav-header">
+		<%= subject.name.capitalize %>
+		
 			<% subject.pages.visible.sorted.each do |page| %>
-			<li><%= link_to_unless_current(page.name, :action => 'show', :id => page.permalink) %></li>
+			<li class = "<%= current_page?(:id => page.permalink) ? 'active' : '' %>"><%= link_to(page.name.capitalize, {:action => 'show', :id => page.permalink} ) %></li>
 			<% end %>
-		</ul>
+		
 	</li>
 	<% end %>
 </ul>

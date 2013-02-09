@@ -1,9 +1,9 @@
 <% @page_title = "New Admin User" %>
 
-<%= link_to("<< Back to admin user menu", {:action => 'list'}, :class => 'back-link') %>
+<%= link_to("<< Back to admin user menu", {:action => 'list'}, :class => 'btn btn-link') %>
 
-<div class="user new">
-	<h2>Create Admin User</h2>
+<div class="admin_users new">
+	<h2 class="title">Create Admin User</h2>
 
 
 
@@ -11,7 +11,7 @@
 	
 		<%= render(:partial => "form", :locals => {:f => f}) %>
 
-		<div class="form-buttons">
+		<div class="form-buttons btn">
 			<%= f.submit("Create Admin User") %>
 		</div>
 	<% end %>

@@ -1,9 +1,9 @@
-<%=  link_to("<< Back to List", {:action => 'list'}, :class => 'back-link') %>
+<%=  link_to("<< Back to List", {:action => 'list'}, :class => 'btn btn-link') %>
 
 <div class="subject show">
-	<h2>Show Subject</h2>
+	<h2 class="title">Show Subject</h2>
 
-	<table summary="Subject detail view">
+	<table summary="subject detail view">
 		<tr>
 			<th>Name</th>
 			<td><%=  @subject.name %></td>
