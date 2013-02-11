@@ -1,9 +1,9 @@
-<%=  link_to("<< Back to List", {:action => 'list'}, :class => 'btn btn-link') %>
+<%=  link_to("<< Back to List", subjects_path, :class => 'btn btn-link') %>
 
 <div class="subject new">
 	<h2 class="title">Create Subject</h2>
 
-	<%= form_for(:subject, :url => {:action => 'create'}) do |f| %>
+	<%= form_for(@subject) do |f| %>
 
 		<%= render(:partial => "form", :locals => {:f => f}) %>
 

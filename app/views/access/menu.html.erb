@@ -2,7 +2,7 @@
 
 <div class="menu">
 	<%= link_to("Logout", {:action => 'logout'}, :class => 'btn logout-btn') %>
-
+	<%= link_to("To Visitor Site", {:controller => 'public'}, :class => 'btn to-visitor-btn') %>
 
 	<h2 id="menu-title">Admin Menu</h2>
 	<div class="identity">Logged in as: <%= session[:username] %></div>

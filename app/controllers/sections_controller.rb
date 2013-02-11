@@ -33,7 +33,7 @@ class SectionsController < ApplicationController
 			#redirect to the list action
 			@section.move_to_position(new_position)
 			flash[:notice] = "Section has been created"
-			redirect_to(:action => 'list', :page_id => @section.page_id)
+			redirect_to(sections_path(:page_id => @section.page_id))
 		else
 			@section_count = @page.sections.size + 1
 			@page_ids = Page.pluck(:id)
@@ -54,7 +54,7 @@ class SectionsController < ApplicationController
 		if @section.update_attributes(params[:section])
 			@section.move_to_position(new_position)
 			flash[:notice] = "You have updated a section"
-			redirect_to(:action => 'show', :id => @section.id, :page_id => @section.page_id)
+			redirect_to(section_path(@section.id, :page_id => @section.page_id))
 		else
 			@section_count = @page.sections.size
 			@page_ids = Page.pluck(:id)
@@ -71,7 +71,7 @@ class SectionsController < ApplicationController
 		section.move_to_position(nil)
 		section.destroy
 		flash[:notice] = "Minus one section. Just deleted it."
-		redirect_to(:action => 'list', :page_id => @page.id)
+		redirect_to(sections_path(:page_id => @page.id))
 	end
 
 	private

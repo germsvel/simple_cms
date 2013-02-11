@@ -63,6 +63,10 @@ table {
 	float:right;
 }
 
+.menu .to-visitor-btn {
+	float: left;
+}
+
 .menu #menu-title {
 	clear: both;
 	text-align: center;

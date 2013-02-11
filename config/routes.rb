@@ -7,11 +7,32 @@ SimpleCms::Application.routes.draw do
   match 'show/:id', :to => 'public#show' 
 
 
-  # resources :subjects do
-  #   member do 
-  #     get :delete
-  #   end
-  # end
+  resources :subjects do 
+    member do 
+      get :delete
+    end
+  end
+
+  resources :admin_users do 
+    member do 
+      get :delete
+    end
+  end
+
+  resources :pages do
+    member do 
+      get :delete
+    end
+  end
+
+  resources :sections do
+    member do 
+      get :delete
+    end
+  end
+
+
+
   #get "demo/index"
 
   # The priority is based upon order of creation:

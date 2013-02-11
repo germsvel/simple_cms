@@ -5,7 +5,7 @@
 <div class="subject list">
 	<h2 class="title">Subjects</h2>
 
-	<%= link_to("Add New Subject", {:action => 'new'}, :class => 'action new btn create-btn' ) %>
+	<%= link_to("Add New Subject", new_subject_path, :class => 'action new btn create-btn' ) %>
 
 	<div class="list query-result-title"> <%= pluralize(@subjects.size, 'subject') %> found </div>
 	
@@ -24,10 +24,10 @@
 			<td class="center"><%= status_tag(subject.visible) %></td>
 			<td class="center"><%= subject.pages.size  %></td>
 			<td class="actions btn-group">
-				<%= link_to("View Pages", {:controller => 'pages', :action => 'list', :subject_id => subject.id}, :class => 'action btn') %>
-				<%=  link_to("Show", {:action => 'show', :id => subject.id}, :class => 'action btn') %>
-				<%=  link_to("Edit", {:action => 'edit', :id => subject.id}, :class => 'action edit btn') %>
-				<%=  link_to("Delete", {:action => 'delete', :id => subject.id}, :class => 'action delete btn btn-warning') %>
+				<%= link_to("View Pages", pages_path(:subject_id => subject.id), :class => 'action btn') %>
+				<%=  link_to("Show", subject_path(subject.id), :class => 'action btn') %>
+				<%=  link_to("Edit", edit_subject_path(subject.id), :class => 'action edit btn') %>
+				<%=  link_to("Delete", delete_subject_path(subject.id), :class => 'action delete btn btn-warning') %>
 			</td>
 
 		</tr>

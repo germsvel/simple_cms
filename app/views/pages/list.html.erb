@@ -1,11 +1,11 @@
 <% @page_title = "Pages List" %>
 
-<%=  link_to("<< Back to Subjects List", {:controller => 'subjects', :action => 'list'}, :class => 'btn btn-link') %>
+<%=  link_to("<< Back to Subjects List", subjects_path, :class => 'btn btn-link') %>
 
 <div class="page list">
 	<h2 class="title">Pages</h2>
 
-	<%= link_to("Add New Page", {:action => 'new', :subject_id => @subject.id}, :class => 'action new btn create-btn' ) %>
+	<%= link_to("Add New Page", new_page_path(:subject_id => @subject.id), :class => 'action new btn create-btn' ) %>
 
 	<div class="query-result-title"> <%= pluralize(@pages.size, 'page') %> found </div>
 
@@ -24,10 +24,10 @@
 			<td class="center"><%= status_tag(page.visible) %></td>
 			<td class="center"><%= page.sections.size  %></td>
 			<td class="actions btn-group">
-				<%= link_to("View Sections", {:controller => 'sections', :action => 'list', :page_id => page.id}, :class => 'action btn') %>
-				<%=  link_to("Show", {:action => 'show', :id => page.id, :subject_id => @subject.id}, :class => 'action btn') %>
-				<%=  link_to("Edit", {:action => 'edit', :id => page.id, :subject_id => @subject.id}, :class => 'action edit btn') %>
-				<%=  link_to("Delete", {:action => 'delete', :id => page.id, :subject_id => @subject.id}, :class => 'action delete btn btn-warning') %>
+				<%= link_to("View Sections", sections_path(:page_id => page.id), :class => 'action btn') %>
+				<%=  link_to("Show", page_path(page.id, :subject_id => @subject.id), :class => 'action btn') %>
+				<%=  link_to("Edit", edit_page_path(page.id, :subject_id => @subject.id), :class => 'action edit btn') %>
+				<%=  link_to("Delete", delete_page_path(page.id, :subject_id => @subject.id), :class => 'action delete btn btn-warning') %>
 			</td>
 
 		</tr>

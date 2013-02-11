@@ -31,7 +31,7 @@ class PagesController < ApplicationController
 		if @page.save 
 			@page.move_to_position(new_position)
 			flash[:notice] = "Page created!"
-			redirect_to(:action => 'list', :subject_id => @page.subject_id)
+			redirect_to(pages_path(:subject_id => @page.subject_id))
 		else
 			@page_count = @subject.pages.size + 1
 			@subject_ids = Subject.pluck(:id)
@@ -52,7 +52,7 @@ class PagesController < ApplicationController
 		if @page.update_attributes(params[:page])
 			@page.move_to_position(new_position)
 			flash[:notice] = "Page updated!"
-			redirect_to(:action => 'show', :id => @page.id, :subject_id => @page.subject_id)
+			redirect_to(page_path(@page.id, :subject_id => @page.subject_id))
 		else
 			@page_count = @subject.pages.size
 			@subject_ids = Subject.pluck(:id)
@@ -69,7 +69,7 @@ class PagesController < ApplicationController
 		page.move_to_position(nil)
 		page.destroy
 		flash[:notice] = "Page deleted!"
-		redirect_to(:action => 'list', :subject_id => @subject.id)
+		redirect_to(pages_path(:subject_id => @subject.id))
 	end
 
 	private

@@ -1,11 +1,11 @@
 <% @page_title = "Sections List" %>
 
-<%= link_to("<< Back to Pages List", {:controller => 'pages', :action => 'list', :subject_id => @page.subject_id}, :class => 'btn btn-link') %>
+<%= link_to("<< Back to Pages List", pages_path(:subject_id => @page.subject_id), :class => 'btn btn-link') %>
 
 <div class="section list">
 	<h2 class="title">Sections</h2>
 
-	<%= link_to("Add New Section", {:action => 'new', :page_id => @page.id}, :class => 'action new btn create-btn' ) %>
+	<%= link_to("Add New Section", new_section_path(:page_id => @page.id), :class => 'action new btn create-btn' ) %>
 
 	<div> <%= pluralize(@sections.size, 'section') %> found </div>	
 
@@ -22,9 +22,9 @@
 			<td><%= section.name.capitalize  %></td>
 			<td class="center"><%= status_tag(section.visible) %></td>
 			<td class="actions btn-group">
-				<%=  link_to("Show", {:action => 'show', :id => section.id, :page_id => @page.id}, :class => 'action btn') %>
-				<%=  link_to("Edit", {:action => 'edit', :id => section.id, :page_id => @page.id}, :class => 'action edit btn') %>
-				<%=  link_to("Delete", {:action => 'delete', :id => section.id, :page_id => @page.id}, :class => 'action delete btn btn-warning') %>
+				<%=  link_to("Show", section_path(section.id, :page_id => @page.id), :class => 'action btn') %>
+				<%=  link_to("Edit", edit_section_path(section.id, :page_id => @page.id), :class => 'action edit btn') %>
+				<%=  link_to("Delete", delete_section_path(section.id, :page_id => @page.id), :class => 'action delete btn btn-warning') %>
 			</td>
 
 		</tr>

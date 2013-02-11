@@ -32,7 +32,7 @@ class SubjectsController < ApplicationController
 			@subject.move_to_position(new_position)
 			#If save succeeds, redireect to list action
 			flash[:notice] = "Subject created."
-			redirect_to(:action => 'list')
+			redirect_to(subjects_path)
 		else
 			#If save fails, redisplay the form so user can fix problems
 			@subject_count = Subject.count + 1
@@ -58,7 +58,7 @@ class SubjectsController < ApplicationController
 			@subject.move_to_position(new_position) 
 			#If update succeeds, redireect to list action
 			flash[:notice] = "Subject updated."
-			redirect_to(:action => 'show', :id => @subject.id)
+			redirect_to(subject_path(@subject.id))
 		else
 			#If update fails, redisplay the form so user can fix problems
 			@subject_count = Subject.count
@@ -75,7 +75,7 @@ class SubjectsController < ApplicationController
 		subject.move_to_position(nil)
 		subject.destroy
 		flash[:notice] = "Subject destroyed."
-		redirect_to(:action => 'list')
+		redirect_to(subjects_path)
 	end
 
 end

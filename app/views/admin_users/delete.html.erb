@@ -1,12 +1,12 @@
 <% @page_title = "Delete Admin User: #{@admin_user.name}" %>
 
-<%= link_to("<< Back to Admin Users menu", {:action => 'list'}, :class => 'btn btn-link') %>
+<%= link_to("<< Back to Admin Users menu", admin_users_path, :class => 'btn btn-link') %>
 
 <div class="admin_users delete">
 	<h2 class="title">Delete Admin User</h2>
 	
 
-	<%= form_for(:admin_user, :url => {:action => 'destroy', :id => @admin_user.id}) do |f| %>
+	<%= form_for(:admin_user, :url => admin_user_path(@admin_user.id), :html => {:method => :delete} ) do |f| %>
 
 	<p>Are you sure you want to permanently delete admin user <%= @admin_user.name %>?</p>
 	<p>This action cannot be undone!</p>

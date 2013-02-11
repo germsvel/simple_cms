@@ -9,7 +9,7 @@
 
 	
 
-	<p><%= link_to("Create New Admin User", {:action => 'new'}, :class => 'action new btn create-btn') %></p>
+	<p><%= link_to("Create New Admin User", new_admin_user_path, :class => 'action new btn create-btn') %></p>
 
 	<div class="query-result-title"><%= pluralize(@admin_users.size, 'admin user') %> found</div>
 
@@ -27,8 +27,8 @@
 			<td><%= admin_user.name %></td>
 			<td><%= mail_to(admin_user.email) %></td>
 			<td  class="actions btn-group">
-				<%= link_to("edit", {:action => 'edit', :id => admin_user.id}, :class => 'btn action edit') %>
-				<%= link_to("delete", {:action => 'delete', :id => admin_user.id}, :class => 'btn btn-warning action delete') %>
+				<%= link_to("edit", edit_admin_user_path(admin_user.id), :class => 'btn action edit') %>
+				<%= link_to("delete", delete_admin_user_path(admin_user.id), :class => 'btn btn-warning action delete') %>
 			</td>
 		</tr>
 		<% end %>
